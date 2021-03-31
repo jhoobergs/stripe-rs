@@ -532,7 +532,7 @@ pub struct CustomerInvoiceSettings {
     pub footer: Option<String>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq)]
 pub struct TaxIdData {
     #[serde(rename = "type")]
     pub type_: TaxIdType,

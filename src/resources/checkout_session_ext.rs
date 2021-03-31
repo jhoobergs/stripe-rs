@@ -1,5 +1,5 @@
 use crate::config::{Client, Response};
-use crate::ids::CustomerId;
+use crate::ids::{CustomerId, TaxRateId};
 use crate::resources::{
     CheckoutSession, CheckoutSessionLocale, CheckoutSessionMode, CheckoutSessionSubmitType,
     Currency,
@@ -96,8 +96,11 @@ pub struct CheckoutSessionLineItem<'a> {
     /// The tax rates that will be applied to this line item depending on the customer’s
     /// billing/shipping address. We currently support the following countries: US, GB, AU, and
     /// all countries in the EU..
+    //#[serde(skip_serializing_if = "Option::is_none")]
+    //pub dynamic_tax_rates: Option<Vec<&'a str>>,
+
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dynamic_tax_rates: Option<Vec<&'a str>>,
+    pub tax_rates: Option<Vec<TaxRateId>>,
     // TODO: remaining optional fields
 }
 
